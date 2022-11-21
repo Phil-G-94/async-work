@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async JS Playground</title>
+</head>
+
+<body>
+  <button id="xhr">Click to start request</button>
+  <button id="reload">Reload</button>
+  <pre readonly class="event-log"></pre>
+
+
+
+  <script>
+
+    /*
+      
+      using the XMLHttpRequest API, passing in callback function(s). 
+      Function returns immediately and calls your callback function when operation is finnished. 
+      Problem: Callback pyramid of doom. Increasing complexity with more/more nested callbacks makes
+      program hard to debug. 
+
+    */
+
+    // declare variable to store the <pre></pre> element
+    const log = document.querySelector('.event-log');
+
+    // add event listener on first button. re-assign the value of log.textContent to an empty string ''.
+        
+    document.querySelector('#xhr').addEventListener('click', () => {
+      log.textContent = '';
+      // grasp a new XMLHttpRequest (XHR) object, assign to variable xhr
+      const xhr = new XMLHttpRequest();
+
+      // attach event listener to xhr object and re-assign value of textContent to the value of xhr.status property
+        // 'loadend' event is fired when request has completed successfully (after load) or unsuccessfully (after abort or error)
+          // this will indicate what status the XHR completes with 
+      xhr.addEventListener('loadend', () => {
+        log.textContent = `${log.textContent}Finished with status: ${xhr.status}`;
+      });
+
+      // Using XHR built-in methods to open and send new HTTP request. 
+        // re-assign the value of log.textContent to template literal confirming the XHR request has started 
+      xhr.open('GET', 'https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json');
+      xhr.send();
+      log.textContent = `${log.textContent} Started XHR request\n`
+    });
+
+    document.querySelector('#reload').addEventListener('click', () => {
+      log.textContent = '';
+      document.location.reload();
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>
