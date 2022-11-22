@@ -36,6 +36,6 @@ attach handlers to this object which will be executed when the operation has suc
 
 ## How to implement a promise-based API
 
-- The Promise constructor
+- The Promise constructor / using promises (see alarm-clock.html). 
 
 
