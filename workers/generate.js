@@ -33,6 +33,6 @@ function generatePrimes(quota) {
 
 	// When we have finished,	instead	of	returning	a	value	like	in	synchronous	version,	send a message to the main thread,
 	// including the number of primes we generated.
-		//	
+		//	Main	script	is	listening	for	this	message	and	will	update	the	DOM	when	the	message	is	received.
 	postMessage(primes.length);
 }

@@ -4,6 +4,11 @@
 - https://thenewtoys.dev/blog/2021/02/08/lets-talk-about-how-to-talk-about-promises/
 - https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing_workers
+- https://developer.mozilla.org/en-US/docs/Web/API/Worker
+
+## Source 
+- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
 
 ## Intro to AJAX
 
@@ -39,3 +44,19 @@ attach handlers to this object which will be executed when the operation has suc
 - The Promise constructor / using promises (see alarm-clock.html). 
 
 
+## Introducing workers 
+
+- Single-threaded vs Multi-threaded code:
+
+ - Single-threaded example -  long-running sync function. The program consists of a single, linear thread (set of instructions). If program waiting for sync function to return it cannot do anything else => renders whole window unresponsive.
+
+ - *Workers* allow you to run some tasks in a different thread so you can start a task but also continue with other processing.
+
+ - Main code and worker code should never get direct access to one another's variables. If both threads have access to the same variables, you run the risk of never knowing when your thread will be suspended/the other will be able to run. 
+
+ - Workers and main code should run in separate worlds and only interact by sending each other messages. This means workers can't access the DOM. 
+
+ - The active learning in this repo (workers directory) only covers what's called a *dedicated worker*. There are other types of workers:
+  - *Shared workers* - can be shared by several different scripts running in different windows.
+  
+  - *Service workers* - act like proxy servers, caching resources so that web application can work when the user is offline. They're a key component of Progressive Web Apps.
