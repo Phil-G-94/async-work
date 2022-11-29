@@ -9,9 +9,9 @@ body {
  display: grid;
  place-items: center;
  grid-template-areas:
-	 "a1 . ."
-	 ". a2 ."
-	 ". . a3";
+	 "a1 a4 ."
+	 "a2 a5 ."
+	 "a3 a6 .";
 }
 
 #alice1 {
@@ -24,4 +24,16 @@ body {
 
 #alice3 {
  grid-area: a3;
+}
+
+#alice4 {
+  grid-area: a4;
+}
+
+#alice5 {
+  grid-area: a5;
+}
+
+#alice4 {
+  grid-area: a6;
 }
