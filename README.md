@@ -57,6 +57,6 @@ attach handlers to this object which will be executed when the operation has suc
  - Workers and main code should run in separate worlds and only interact by sending each other messages. This means workers can't access the DOM. 
 
  - The active learning in this repo (workers directory) only covers what's called a *dedicated worker*. There are other types of workers:
-  - *Shared workers* - can be shared by several different scripts running in different windows.
-  
-  - *Service workers* - act like proxy servers, caching resources so that web application can work when the user is offline. They're a key component of Progressive Web Apps.
+	- *Shared workers* - can be shared by several different scripts running in different windows.
+	
+	- *Service workers* - act like proxy servers, caching resources so that web application can work when the user is offline. They're a key component of Progressive Web Apps.

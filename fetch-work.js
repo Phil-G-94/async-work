@@ -33,7 +33,7 @@ const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/
 fetchPromise.then((response) => {
  const jsonPromise = response.json();
  jsonPromise.then((data) => {
-  console.log(data[0].name)
+	console.log(data[0].name)
  })
 })
 
@@ -46,14 +46,14 @@ fetchPromise.then((response) => {
 
 // Rewriten using promise chaining  
  // Removed the call to second .then from inside the handler to first .then (see above)
-  // Instead, the below returns the promise returned by json() and call the second .then on that return value
+	// Instead, the below returns the promise returned by json() and call the second .then on that return value
 
 const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
 
 fetchPromise
  .then((response) => response.json())
  .then((data) => {
-  console.log(data[0].name);
+	console.log(data[0].name);
  });
 
 */ 
@@ -67,19 +67,19 @@ const fetchPromise = fetch('bad-scheme://mdn.github.io/learning-area/javascript/
 fetchPromise
  .then((response) => {
 
-  // throws new Error if ok property of response interface isn't true/if the response wasn't succesful. else returns response.json. 
-  if (!response.ok) {
-   throw new Error(`HTTP error: ${response.status}`);
-  }
-  return response.json();
+	// throws new Error if ok property of response interface isn't true/if the response wasn't succesful. else returns response.json. 
+	if (!response.ok) {
+	 throw new Error(`HTTP error: ${response.status}`);
+	}
+	return response.json();
  })
  .then((data) => {
-  console.log(data[0].name)
+	console.log(data[0].name)
  })
 
  // logs error when the promise is rejected. calls the catch() handler, 
  .catch((error) => {
-  console.error(`Could not get products: ${error}`);
+	console.error(`Could not get products: ${error}`);
  });
 
 */ 
@@ -96,12 +96,12 @@ const fetchPromise3 = fetch('https://mdn.github.io/learning-area/javascript/oojs
  // call .then method to take in responses, use for...of loop to iterate through individual responses and log them to the console. 
 Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
  .then((responses) => {
-  for(const response of responses) {
-   console.log(`${response.url}: ${response.status}`);
-  }
+	for(const response of responses) {
+	 console.log(`${response.url}: ${response.status}`);
+	}
  })
  .catch((error) => {
-  console.error(`Failed to fetch: ${error}`);
+	console.error(`Failed to fetch: ${error}`);
  }); 
 
  Promise.any() works similarly except that it is fulfilled as soon as any of the promises is fulfilled or rejected if all of them are rejected. 
@@ -111,29 +111,29 @@ Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
 // async and await
  
  // adding async keyword before function declaration makes that function asynchronous.
-  // enables us to write code that uses asynchronous functions but looks like synchronous code. 
-   // allows use of try...catch block for error handling.
-    // you can only use await inside an async function *unless* your code is in a JavaScript Module.  
-     // just like a promise chain, awaits forces asynchronous operations to be completed in series. 
+	// enables us to write code that uses asynchronous functions but looks like synchronous code. 
+	 // allows use of try...catch block for error handling.
+		// you can only use await inside an async function *unless* your code is in a JavaScript Module.  
+		 // just like a promise chain, awaits forces asynchronous operations to be completed in series. 
 
  async function fetchProducts() {
 
-  try {
+	try {
 
-   const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+	 const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
 
-   if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`)
-   }
+	 if (!response.ok) {
+		throw new Error(`HTTP error: ${response.status}`)
+	 }
 
-   const data = await response.json();
+	 const data = await response.json();
 
-   console.log(data[0].name)
-  }
-  catch (error) {
-   console.error(`Could not get products: ${error}`);
-  }
+	 console.log(data[0].name)
+	}
+	catch (error) {
+	 console.error(`Could not get products: ${error}`);
+	}
  }
 
- fetchProducts();
+fetchProducts();
 

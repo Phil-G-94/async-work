@@ -9,9 +9,9 @@ body {
  display: grid;
  place-items: center;
  grid-template-areas:
-   "a1 . ."
-   ". a2 ."
-   ". . a3";
+	 "a1 . ."
+	 ". a2 ."
+	 ". . a3";
 }
 
 #alice1 {
